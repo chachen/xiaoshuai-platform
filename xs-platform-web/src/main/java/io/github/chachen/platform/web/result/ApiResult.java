@@ -2,14 +2,14 @@ package io.github.chachen.platform.web.result;
 
 import io.github.chachen.platform.core.context.TraceContext;
 import io.github.chachen.platform.web.exception.CommonErrorCode;
-import io.github.chachen.platform.web.exception.DefaultApiErrorCodeMapper;
 import io.github.chachen.platform.web.exception.ErrorCode;
 
 /**
- * Platform response envelope. The numeric code and requestId match the shared
- * contract used by downstream applications such as LedgerMind.
+ * Success uses numeric code 0; failures preserve the string business code.
+ * The code is Object only because the public JSON contract intentionally uses
+ * different JSON scalar types for success and failure.
  */
-public record ApiResult<T>(int code, String message, T data, String requestId) {
+public record ApiResult<T>(Object code, String message, T data, String requestId) {
 
     public static <T> ApiResult<T> success(T data) {
         return new ApiResult<>(0, CommonErrorCode.SUCCESS.getMessage(), data, TraceContext.getOrCreate());
@@ -24,10 +24,6 @@ public record ApiResult<T>(int code, String message, T data, String requestId) {
     }
 
     public static ApiResult<Void> failure(String code, String message) {
-        return failure(new DefaultApiErrorCodeMapper().map(code), message);
-    }
-
-    public static ApiResult<Void> failure(int code, String message) {
         return new ApiResult<>(code, message, null, TraceContext.getOrCreate());
     }
 }

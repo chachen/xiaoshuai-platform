@@ -13,7 +13,7 @@
 - 用户、角色、权限、菜单基础管理，BCrypt 密码和管理员初始化开关
 - JWT 登录、刷新、注销、当前用户、白名单和登录失败锁定
 - `@RequirePermission` 接口级权限校验
-- 数字 `code=0`、`requestId` 统一响应；可关闭平台全局 SecurityFilterChain 以复用业务项目现有安全链
+- 成功响应使用数字 `code=0`，失败响应保留字符串业务码并支持 `ApiErrorCodeMapper` 适配；可关闭平台全局 SecurityFilterChain
 - 系统管理接口默认使用 `@RequirePermission` 做细粒度权限保护
 - 字典本地缓存；有 Redis 时可切换 Redis
 - 本地文件存储；可选 MinIO 后端
@@ -33,6 +33,8 @@
 ~~~
 
 `xs-platform-starter` 是聚合 Starter，不是把所有 class 打进一个 uber/fat JAR。平台内部各模块仍然分别构建 JAR，由 Maven 通过传递依赖自动解析；业务项目的 POM 通常只需要声明 Starter。需要 Redis、MinIO 或数据库驱动时，再由业务项目按需增加对应依赖。
+
+为避免类库接入时主动接管宿主项目，验证码、数据库、系统、认证、字典、文件和日志自动配置默认关闭；使用某项能力时显式设置对应的 `xs.*.enabled=true`。平台认证链和全局异常处理器也默认关闭。
 
 模块职责如下：
 

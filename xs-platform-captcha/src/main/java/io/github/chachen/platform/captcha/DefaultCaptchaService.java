@@ -1,7 +1,5 @@
 package io.github.chachen.platform.captcha;
 
-import io.github.chachen.platform.web.exception.BusinessException;
-
 import javax.imageio.ImageIO;
 import java.awt.*;
 import java.awt.image.BufferedImage;
@@ -61,6 +59,6 @@ public class DefaultCaptchaService implements CaptchaService {
         String expected = key == null ? null : store.get(key);
         store.delete(key);
         if (expected == null || answer == null || !(ignoreCase ? expected.equalsIgnoreCase(answer) : expected.equals(answer)))
-            throw new BusinessException("CAPTCHA_INVALID", "验证码错误或已过期");
+            throw new CaptchaException("CAPTCHA_INVALID", "验证码错误或已过期");
     }
 }
