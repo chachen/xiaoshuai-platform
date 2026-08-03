@@ -1,0 +1,4 @@
+package io.github.chachen.platform.autoconfigure;
+import io.github.chachen.platform.file.*; import io.minio.MinioClient; import org.springframework.boot.autoconfigure.*; import org.springframework.boot.autoconfigure.condition.*; import org.springframework.context.annotation.Bean;
+@AutoConfiguration(after=XsFileAutoConfiguration.class) @ConditionalOnExpression("'${xs.file.enabled:false}' == 'true' && '${xs.file.backend:local}' == 'minio'") @ConditionalOnClass(name="io.minio.MinioClient")
+public class XsMinioFileAutoConfiguration { @Bean @ConditionalOnMissingBean(MinioClient.class) MinioClient minioClient(FileProperties p){return MinioClient.builder().endpoint(p.getEndpoint()).credentials(p.getAccessKey(),p.getSecretKey()).build();} @Bean @ConditionalOnMissingBean(FileStorage.class) FileStorage minioFileStorage(MinioClient client,FileProperties p){return new MinioFileStorage(client,p);} }

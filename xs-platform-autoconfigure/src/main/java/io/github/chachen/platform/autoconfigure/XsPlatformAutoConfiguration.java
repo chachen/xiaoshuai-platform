@@ -10,19 +10,19 @@ import org.springframework.boot.context.properties.EnableConfigurationProperties
 @AutoConfiguration
 @EnableConfigurationProperties(XsPlatformProperties.class)
 @ConditionalOnProperty(
-    prefix = "xs.platform",
-    name = "enabled",
-    havingValue = "true",
-    matchIfMissing = true
+        prefix = "xs.platform",
+        name = "enabled",
+        havingValue = "true",
+        matchIfMissing = true
 )
 public class XsPlatformAutoConfiguration {
 
     private static final Logger log =
-        LoggerFactory.getLogger(XsPlatformAutoConfiguration.class);
+            LoggerFactory.getLogger(XsPlatformAutoConfiguration.class);
 
     public XsPlatformAutoConfiguration(XsPlatformProperties properties) {
         log.info("{} enabled for application: {}",
-            XsPlatform.NAME,
-            properties.getApplicationName());
+                XsPlatform.NAME,
+                properties.getApplicationName());
     }
 }

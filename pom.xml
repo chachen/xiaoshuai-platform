@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<project xmlns="http://maven.apache.org/POM/4.0.0"
-         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+<project xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xmlns="http://maven.apache.org/POM/4.0.0"
          xsi:schemaLocation="
          http://maven.apache.org/POM/4.0.0
          https://maven.apache.org/xsd/maven-4.0.0.xsd">
@@ -17,6 +17,15 @@
 
     <modules>
         <module>xs-platform-core</module>
+        <module>xs-platform-web</module>
+        <module>xs-platform-captcha</module>
+        <module>xs-platform-database</module>
+        <module>xs-platform-system</module>
+        <module>xs-platform-auth</module>
+        <module>xs-platform-dict</module>
+        <module>xs-platform-log</module>
+        <module>xs-platform-file</module>
+        <module>xs-platform-desensitize</module>
         <module>xs-platform-autoconfigure</module>
         <module>xs-platform-starter</module>
         <module>xs-platform-test-app</module>
@@ -25,6 +34,9 @@
     <properties>
         <java.version>21</java.version>
         <spring-boot.version>3.5.4</spring-boot.version>
+        <mybatis-plus.version>3.5.12</mybatis-plus.version>
+        <jjwt.version>0.12.6</jjwt.version>
+        <caffeine.version>3.2.1</caffeine.version>
         <maven.compiler.release>${java.version}</maven.compiler.release>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     </properties>
@@ -37,6 +49,16 @@
                 <version>${spring-boot.version}</version>
                 <type>pom</type>
                 <scope>import</scope>
+            </dependency>
+            <dependency>
+                <groupId>com.baomidou</groupId>
+                <artifactId>mybatis-plus-spring-boot3-starter</artifactId>
+                <version>${mybatis-plus.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>com.baomidou</groupId>
+                <artifactId>mybatis-plus-jsqlparser</artifactId>
+                <version>${mybatis-plus.version}</version>
             </dependency>
         </dependencies>
     </dependencyManagement>

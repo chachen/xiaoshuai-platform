@@ -1,1 +1,13 @@
 io.github.chachen.platform.autoconfigure.XsPlatformAutoConfiguration
+io.github.chachen.platform.autoconfigure.XsWebAutoConfiguration
+io.github.chachen.platform.autoconfigure.XsCaptchaAutoConfiguration
+io.github.chachen.platform.autoconfigure.XsRedisCaptchaAutoConfiguration
+io.github.chachen.platform.autoconfigure.XsDatabaseAutoConfiguration
+io.github.chachen.platform.autoconfigure.XsSystemAutoConfiguration
+io.github.chachen.platform.autoconfigure.XsAuthAutoConfiguration
+io.github.chachen.platform.autoconfigure.XsDictAutoConfiguration
+io.github.chachen.platform.autoconfigure.XsRedisDictAutoConfiguration
+io.github.chachen.platform.autoconfigure.XsFileAutoConfiguration
+io.github.chachen.platform.autoconfigure.XsMinioFileAutoConfiguration
+io.github.chachen.platform.autoconfigure.XsLogAutoConfiguration
+io.github.chachen.platform.autoconfigure.XsDatabaseLogAutoConfiguration

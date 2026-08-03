@@ -1,0 +1,32 @@
+package io.github.chachen.platform.core.context;
+
+/**
+ * Request trace id holder. Always clear it at the end of a request.
+ */
+public final class TraceContext {
+    private static final ThreadLocal<String> TRACE_ID = new ThreadLocal<>();
+
+    private TraceContext() {
+    }
+
+    public static void set(String traceId) {
+        TRACE_ID.set(traceId);
+    }
+
+    public static String get() {
+        return TRACE_ID.get();
+    }
+
+    public static String getOrCreate() {
+        String value = TRACE_ID.get();
+        if (value == null || value.isBlank()) {
+            value = java.util.UUID.randomUUID().toString().replace("-", "");
+            TRACE_ID.set(value);
+        }
+        return value;
+    }
+
+    public static void clear() {
+        TRACE_ID.remove();
+    }
+}

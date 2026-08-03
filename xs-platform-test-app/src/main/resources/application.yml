@@ -1,8 +1,35 @@
 spring:
   application:
     name: xs-platform-test-app
+  datasource:
+    url: jdbc:h2:mem:xs_platform;MODE=MySQL;DB_CLOSE_DELAY=-1
+    username: sa
+    password:
+    driver-class-name: org.h2.Driver
+  flyway:
+    locations: classpath:db/xs-platform-migration/common
+
+server:
+  port: 0
 
 xs:
   platform:
     enabled: true
     application-name: ${spring.application.name}
+  web:
+    global-error-handler-enabled: true
+  database:
+    enabled: true
+  captcha:
+    enabled: true
+  system:
+    enabled: true
+  auth:
+    enabled: true
+    security-chain-enabled: true
+  dict:
+    enabled: true
+  file:
+    enabled: true
+  log:
+    enabled: true

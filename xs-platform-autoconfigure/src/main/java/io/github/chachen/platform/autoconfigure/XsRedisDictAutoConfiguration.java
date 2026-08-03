@@ -1,0 +1,4 @@
+package io.github.chachen.platform.autoconfigure;
+import io.github.chachen.platform.dict.*; import com.fasterxml.jackson.databind.ObjectMapper; import org.springframework.boot.autoconfigure.*; import org.springframework.boot.autoconfigure.condition.*; import org.springframework.context.annotation.Bean; import org.springframework.data.redis.core.StringRedisTemplate;
+@AutoConfiguration(after=XsDictAutoConfiguration.class) @ConditionalOnProperty(prefix="xs.dict",name="enabled",havingValue="true",matchIfMissing=false) @ConditionalOnClass(name="org.springframework.data.redis.core.StringRedisTemplate")
+public class XsRedisDictAutoConfiguration { @Bean @ConditionalOnMissingBean(DictService.class) DictService redisDictService(StringRedisTemplate redis,ObjectMapper mapper){return new RedisDictService(redis,mapper);} }
