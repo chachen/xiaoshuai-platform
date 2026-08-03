@@ -1,6 +1,6 @@
-package com.xiaoshuai.platform.autoconfigure;
+package io.github.chachen.platform.autoconfigure;
 
-import com.xiaoshuai.platform.core.XsPlatform;
+import io.github.chachen.platform.core.XsPlatform;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.boot.autoconfigure.AutoConfiguration;

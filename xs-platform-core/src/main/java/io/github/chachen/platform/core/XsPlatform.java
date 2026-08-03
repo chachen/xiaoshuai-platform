@@ -1,4 +1,4 @@
-package com.xiaoshuai.platform.core;
+package io.github.chachen.platform.core;
 
 /**
  * Xiaoshuai Platform 基础标识。

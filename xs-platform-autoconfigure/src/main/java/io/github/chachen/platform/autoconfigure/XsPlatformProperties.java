@@ -1,4 +1,4 @@
-package com.xiaoshuai.platform.autoconfigure;
+package io.github.chachen.platform.autoconfigure;
 
 import org.springframework.boot.context.properties.ConfigurationProperties;
 

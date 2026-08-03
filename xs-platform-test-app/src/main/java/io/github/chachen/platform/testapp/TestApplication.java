@@ -1,4 +1,4 @@
-package com.xiaoshuai.platform.testapp;
+package io.github.chachen.platform.testapp;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
